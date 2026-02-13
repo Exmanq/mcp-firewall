@@ -19,4 +19,4 @@ jobs:
       - run: cargo install cargo-deny --locked
       - run: cargo deny check licenses
       - run: cargo install cargo-cyclonedx --locked
-      - run: cargo cyclonedx --format json --output-file sbom.json
+      - run: cargo cyclonedx --format json --override-filename sbom

@@ -26,7 +26,13 @@ jobs:
           cargo build -p mcp-firewall --release --target ${{ matrix.target }}
       - run: mkdir -p dist && cp target/${{ matrix.target }}/release/mcp-firewall dist/mcp-firewall-${{ matrix.target }}
       - run: cargo install cargo-cyclonedx --locked
-      - run: cargo cyclonedx --format json --output-file dist/sbom-${{ matrix.target }}.json
+      - run: |
+          cargo cyclonedx --format json --override-filename sbom
+          mkdir -p dist
+          find crates -name sbom.json -type f -print0 | while IFS= read -r -d '' f; do
+            crate=$(basename "$(dirname "$f")")
+            cp "$f" "dist/sbom-${{ matrix.target }}-${crate}.json"
+          done
       - uses: actions/upload-artifact@v4
         with:
           name: mcp-firewall-${{ matrix.target }}
