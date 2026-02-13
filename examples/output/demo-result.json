@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "name": "tool_allowlist",
+      "result": "pass"
+    },
+    {
+      "name": "path_restriction",
+      "result": "pass"
+    },
+    {
+      "name": "origin_auth",
+      "result": "pass"
+    },
+    {
+      "name": "signature_verification",
+      "result": "pass"
+    },
+    {
+      "name": "rate_limit",
+      "result": "pass"
+    }
+  ],
+  "project": "mcp-firewall",
+  "version": "0.1.0"
+}

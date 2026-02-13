@@ -1,0 +1,10 @@
+firewall:
+  allow_tools: ["tools.call"]
+  deny_tools: ["tools.delete"]
+  allowed_paths: ["/safe"]
+  max_body_bytes: 65536
+  require_origin: false
+  allowed_origins: []
+  require_signature: false
+  rate_limit_per_minute: 120
+  sign_responses: false
